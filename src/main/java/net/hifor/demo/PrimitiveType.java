@@ -7,6 +7,7 @@ package net.hifor.demo;
  */
 public class PrimitiveType {
     public static void main(String[] args) {
+        System.out.println("\n================================================\n");
         primitiveTypeSample();
         System.out.println("\n================================================\n");
         primitiveTypeRange();
@@ -14,6 +15,7 @@ public class PrimitiveType {
         primitiveTypeDefault();
         System.out.println("\n================================================\n");
         primitiveTypeOverflow();
+        System.out.println("\n================================================\n");
     }
 
     /**
@@ -73,10 +75,10 @@ public class PrimitiveType {
         System.out.println("32位有符号整数 int: " + Integer.MIN_VALUE + " - " + Integer.MAX_VALUE);
         // 64位有符号整数，范围：-9223372036854775808（-2^63） 到 9223372036854775807（2^63 -1）
         System.out.println("64位有符号整数 long: " + Long.MIN_VALUE + " - " + Long.MAX_VALUE);
-        // 32位单精度浮点数，范围：1.4 * (10^-45) 到 3.4028235 * (10^38)
-        System.out.println("32位单精度浮点数 float: " + Float.MIN_VALUE + " - " + Float.MAX_VALUE);
-        // 64位双精度浮点数，范围：4.9E-324 到 1.7976931348623157E308
-        System.out.println("double: " + Double.MIN_VALUE + " - " + Double.MAX_VALUE);
+        // 32位单精度浮点数，范围：-3.4028235 * (10^38) 到 3.4028235 * (10^38)
+        System.out.println("32位单精度浮点数 float: " + (-Float.MAX_VALUE) + " - " + Float.MAX_VALUE);
+        // 64位双精度浮点数，范围：-1.7976931348623157E308 到 1.7976931348623157E308
+        System.out.println("64位双精度浮点数 double: " + (-Double.MAX_VALUE) + " - " + Double.MAX_VALUE);
         // char Unicode编码范围为：(十六进制) \u0000 - \uFFFF  0-65535
         System.out.println("char: " + (int) Character.MIN_VALUE + " - " + (int) Character.MAX_VALUE);
         // 布尔类型: 真或假
@@ -164,33 +166,44 @@ public class PrimitiveType {
         System.out.println("long overflowed Max Long: " + Long.MAX_VALUE + " - 1 = " + overflowedMaxLong);
 
 
-
         // 浮点类型（float、double）：
         //    超出浮点类型的范围时，将发生正负无穷大（Infinity）或NaN（Not a Number）
         // float类型
-        // 1.4E-45
-        float minValueFloat = -Float.MIN_VALUE;
-        // 溢出，变为正无穷大
-        float overflowedMinValueFloat = minValueFloat / 2;
+        // -3.4028235E38
+        float minValueFloat = -Float.MAX_VALUE;
+        // 溢出，负无穷大
+        float overflowedMinValueFloat = minValueFloat * 2;
         // 3.4028235E38
         float maxValueFloat = Float.MAX_VALUE;
-        // 溢出，变为正无穷大
+        // 溢出，正无穷大
         float overflowedMaxValueFloat = maxValueFloat * 2;
         System.out.println("float overflowed Min Float: " + overflowedMinValueFloat);
         System.out.println("float overflowed Max Float: " + overflowedMaxValueFloat);
-        System.out.println( 0.0 / 0.0);
-        System.out.println(-1f);
+        //float其他特殊值
+        //符合IEEE 754标准的浮点数称为规格化数
+        System.out.println("float 最小正数 规格化数：" + Float.MIN_NORMAL);
+        System.out.println("float 最小正数 非规格化数：" + Float.MIN_VALUE);
+        System.out.println("float 正无穷大：" + Float.POSITIVE_INFINITY);
+        System.out.println("float 负无穷大：" + Float.NEGATIVE_INFINITY);
+        System.out.println("float Not a Number：" + Float.NaN);
 
         // double类型
-        // 4.9E-324
-        double minValueDouble = Double.MIN_VALUE;
-        // 溢出，变为正无穷大
-        double overflowedMinValueDouble = minValueDouble / 2;
+        // -1.7976931348623157E308
+        double minValueDouble = -Double.MAX_VALUE;
+        // 溢出，正无穷大
+        double overflowedMinValueDouble = minValueDouble * 2;
         // 1.7976931348623157E308
         double maxValueDouble = Double.MAX_VALUE;
-        // 溢出，变为正无穷大
+        // 溢出，正无穷大
         double overflowedMaxValueDouble = maxValueDouble * 2;
         System.out.println("double overflowed Min Double: " + overflowedMinValueDouble);
         System.out.println("double overflowed Max Double: " + overflowedMaxValueDouble);
+        //double其他特殊值
+        //符合IEEE 754标准的浮点数称为规格化数
+        System.out.println("double 最小正数 规格化数：" + Double.MIN_NORMAL);
+        System.out.println("double 最小正数 非规格化数：" + Double.MIN_VALUE);
+        System.out.println("double 正无穷大：" + Double.POSITIVE_INFINITY);
+        System.out.println("double 负无穷大：" + Double.NEGATIVE_INFINITY);
+        System.out.println("double Not a Number：" + Double.NaN);
     }
 }
