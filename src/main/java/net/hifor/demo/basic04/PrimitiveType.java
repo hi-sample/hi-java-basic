@@ -1,8 +1,12 @@
-package net.hifor.demo;
+package net.hifor.demo.basic04;
 
 /**
  * @author IKin <br/>
- * @description Java语言基础 <br/>
+ * @description Java语言基础-8种基本数据类型 <br/>
+ *              4种 整型
+ *              2种 浮点型
+ *              1种 Unicode编码的字符型
+ *              1种 布尔型
  * @create 2024/1/12 09:16 <br/>
  */
 public class PrimitiveType {
@@ -23,17 +27,22 @@ public class PrimitiveType {
      * 数值型：
      * 整数类型：byte,short,int,long
      * 浮点类型：float,double
-     * 字符型：char
-     * 布尔型：boolean
+     * 字符类型：char
+     * 布尔类型：boolean
      */
     private static void primitiveTypeSample() {
-        // 整数类型
+        // 整数类型，用于表示没有小数部分的数值，允许负数
         // 8位有符号整数
         byte byteVar = 127;
         // 16位有符号整数
         short shortVar = 32767;
         // 32位有符号整数
         int intVar = 2147483647;
+        // 数字加下划线用于提高可读性，java编译器会自动去除
+        int int1 = 1_000_000;
+        // 0b或者0B 表示二进制数
+        int int2 = 0b1111_0100_0010_0100_0000;
+        System.out.println("100万的两种不同写法等值: " + (int1==int2));
         // 64位有符号整数
         long longVar = 9223372036854775807L;
 
@@ -45,7 +54,9 @@ public class PrimitiveType {
 
         // 字符类型
         // 16位无符号Unicode字符
+        // 两种赋值方法：码点 十进制65 = 十六进制41
         char charVar = 65;
+        char charUnicodeVar = '\u0041';
 
         // 布尔类型
         // 表示逻辑真或假
@@ -59,6 +70,7 @@ public class PrimitiveType {
         System.out.println("floatVar: " + floatVar);
         System.out.println("doubleVar: " + doubleVar);
         System.out.println("charVar: " + charVar);
+        System.out.println("charUnicodeVar: " + charUnicodeVar);
         System.out.println("booleanVar: " + booleanVar);
     }
 
@@ -111,7 +123,7 @@ public class PrimitiveType {
     }
 
     /**
-     * 8种数据类型超出边界
+     * 8种数据类型超出边界的情况
      */
     private static void primitiveTypeOverflow() {
         // 整数类型（byte、short、int、long）：
