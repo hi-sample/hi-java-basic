@@ -11,7 +11,7 @@ package net.hifor.demo.basic01;
  *    类名:HelloWorld  =>  文件名:HelloWorld.java
  *    public       :  访问修饰符
  *    class        :  定义类的关键字
- *    HelloWorld   :  类的名称，大写字母开头，驼峰命名法，可自定义
+ *    HelloWorld   :  标识符 类的名称，大写字母开头，驼峰命名法，可自定义
  *    {}           :  代码块
  *
  *    Java编译指令：

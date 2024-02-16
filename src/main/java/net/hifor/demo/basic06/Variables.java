@@ -29,7 +29,7 @@ public class Variables {
         System.out.println("Local Variable: " + localVar);
 
         // 修改类变量的值
-        classVariable = 50;
+        Variables.classVariable = 50;
 
         // 修改成员变量的值
         obj.instanceVariable = 40;
@@ -37,5 +37,11 @@ public class Variables {
         // 再次使用变量
         System.out.println("Modified Class Variable: " + classVariable);
         System.out.println("Modified Instance Variable: " + obj.instanceVariable);
+
+        // 注意事项
+        // 1. 变量必须先声明再使用
+        // 2. 局部变量在声明后必须初始化才能使用
+        // 3. 类变量可以直接通过类名访问，成员变量需要通过实例化对象访问
+        // 4. 类变量是所有实例共享的，而成员变量是每个实例独有的
     }
 }
