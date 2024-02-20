@@ -16,7 +16,7 @@ public class Operator {
         System.out.println("Subtraction: " + (a - b));
         // 乘法
         System.out.println("Multiplication: " + (a * b));
-        // 取整
+        // 当参与/运算的两个操作数都是整数时，为取整运算
         System.out.println("Division: " + (a / b));
         // 取余
         System.out.println("Modulus: " + (a % b));
@@ -57,14 +57,19 @@ public class Operator {
         // 第1位为符号位 0:正数 1:负数
         //             5:   0000 0101[补]
         //        ~5 取反：  1111 1010[补] = 1111 1001[反] = 1000 0110[原]  = -6
-        System.out.println("Bitwise Complement of x: " + (~x));
-        // 左移运算符（<<） 按位左移运算符。左操作数按位左移右操作数指定的位数。
-        System.out.println("Left Shift of x by 1: " + (x << 1));
-        // 右移运算符（>>） 按位右移运算符。左操作数按位右移右操作数指定的位数。
-        System.out.println("Right Shift of x by 1: " + (x >> 1));
-        // 无符号右移运算符（>>>） 	按位右移补零操作符。左操作数的值按右操作数指定的位数右移，移动得到的空位以零填充。
-        int unsignedRightShift = -10 >>> 1; // 结果为 0111 1111 1111 1111 1111 1111 1111 1110，即 2147483646
-        System.out.println("Unsigned Right Shift of -10 by 1: " + unsignedRightShift);
+        System.out.println("Bitwise Complement of x:  ~" + x + "  ::  " + (~x));
+        // 左移运算符（<<） 按位左移运算符。不考虑符号位，左边超出的部分舍弃，右边补零。
+        System.out.println("Left Shift of x by 1:  " + x + " << 1  ::  " + (x << 1));
+        System.out.println("Left Shift of -x by 1:  -" + x + " << 1  ::  " + (-x << 1));
+        // 右移运算符（>>） 按位右移运算符。考虑符号位，左边的用原有符号位补充，右边超出的部分舍弃。
+        System.out.println("Right Shift of x by 1:  " + x + " >> 1  ::  " + (x >> 1));
+        System.out.println("Right Shift of -x by 1:  -" + x + " >> 1  ::  " + (-x >> 1));
+        // 无符号右移运算符（>>>） 	按位右移补零操作符。不考虑符号位，左边部分总是以0填充，右边部分舍弃。
+        //    十进制:  -10
+        //    二进制:  1111 1111 1111 1111 1111 1111 1111 0110[32位补码]
+        // 无符号右移:  0111 1111 1111 1111 1111 1111 1111 1011[补] = 2147483646
+        int unsignedRightShift = -10 >>> 1;
+        System.out.println("Unsigned Right Shift of -10 by 1:  -10 >>> 1  ::  " + unsignedRightShift);
 
         // 逻辑运算符
         boolean p = true, q = false;
@@ -118,6 +123,7 @@ public class Operator {
      * | =    +=    -=    *=    /=    %=    &=    |=    ^=    <<=    >>=    >>>=  | 从右向左 |
      */
     private static void precedence() {
+        // 注意：以下代码仅用于演示运算符的优先级，实际开发代码为了提高代码可读性，建议使用等价写法
         // && 优先级高于 ||
         // 等价于 true || (false && false)
         // 结果为 true
